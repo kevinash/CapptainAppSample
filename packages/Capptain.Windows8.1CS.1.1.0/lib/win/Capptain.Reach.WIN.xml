@@ -1,0 +1,517 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Capptain.Reach.Win</name>
+    </assembly>
+    <members>
+        <member name="T:Capptain.Reach.InteractiveContentStateMachine">
+            <summary>
+            Almost all the reach push message management is done by the portable part but a little part of the message behavior is different
+            from Windows to Windows Phone. This class gathers all the windows store specific behavior for the reach message state machine.
+            </summary>
+        </member>
+        <member name="T:Capptain.Reach.CapptainHTMLVariableSetter">
+            <summary>
+            Manage HTML interaction
+            </summary>
+        </member>
+        <member name="F:Capptain.Reach.CapptainHTMLVariableSetter.mWebView">
+            <summary>
+            Current webview where you display your HTML
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainHTMLVariableSetter.#ctor(Windows.UI.Xaml.Controls.WebView)">
+            <summary>
+            CapptainHTMLVariableSetter constructor
+            </summary>
+            <param name="webview">The webview where you display your HTML</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainHTMLVariableSetter.ScriptInvocatorSetAttribut(System.String,System.String,System.String)">
+            <summary>
+            Set top level attribut to value
+            </summary>
+            <param name="element">An HTML element's name</param>
+            <param name="attribut">Attribut's name of the specified element</param>
+            <param name="value">New value for the attribut</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainHTMLVariableSetter.ScriptInvocatorSetStyle(System.String,System.String,System.String)">
+            <summary>
+            Set style attribut to value
+            </summary>
+            <param name="element">An HTML element's name</param>
+            <param name="attribut">Name of the attribut to modify in the style attribut</param>
+            <param name="value">New value for the attribut</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainHTMLVariableSetter.ScriptInvocatorSetText(System.String,System.String)">
+            <summary>
+            Add text in the selected element and escape '\n' by 'br' tag and ''' by '\\''
+            </summary>
+            <param name="element">An HTML element's name</param>
+            <param name="value">Value to set on the object (old setted value will be erase)</param>
+        </member>
+        <member name="T:Capptain.Reach.CapptainReachPageViewModel`1">
+            <summary>
+            CapptainReachPageViewModel
+            </summary>
+            <typeparam name="Payload"></typeparam>
+        </member>
+        <member name="T:Capptain.Reach.CapptainReachViewModel">
+            <summary>
+            A basic class to handle the common event on a notification/announcement/poll.
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReachViewModel.Display">
+            <summary>
+            Indicate that the reach content has been displayed.
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReachViewModel.Action">
+            <summary>
+            Indicate that the reach content has been actioned.
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReachViewModel.Exit">
+            <summary>
+            Indicate that the reach content has been exited.
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReachViewModel.RaiseDisplayed(Capptain.Reach.CapptainReachFeedbackEventArgs)">
+            <summary>
+            Raise displayed event
+            </summary>
+            <param name="e">Args</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReachViewModel.RaiseActioned(Capptain.Reach.CapptainReachFeedbackEventArgs)">
+            <summary>
+            Raise actioned event
+            </summary>
+            <param name="e">Args</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReachViewModel.RaiseExited(Capptain.Reach.CapptainReachFeedbackEventArgs)">
+            <summary>
+            Raise exited event
+            </summary>
+            <param name="e">Args</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReachPageViewModel`1.#ctor">
+            <summary>
+            Create an empty CapptainReachPageViewModel
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReachPageViewModel`1.#ctor(Capptain.Reach.CapptainReachContent)">
+            <summary>
+            Create a CapptainReachPageViewModel
+            </summary>
+            <param name="content">CapptainReachContent to base the VM on</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReachPageViewModel`1.InitializeProperties(`0)">
+            <summary>
+            Initialize the properties of the VM
+            </summary>
+            <param name="payload"></param>
+        </member>
+        <member name="P:Capptain.Reach.CapptainReachPageViewModel`1.Title">
+            <summary>
+            Title
+            </summary>
+        </member>
+        <member name="P:Capptain.Reach.CapptainReachPageViewModel`1.Subtitle">
+            <summary>
+            Subtitle
+            </summary>
+        </member>
+        <member name="P:Capptain.Reach.CapptainReachPageViewModel`1.Body">
+            <summary>
+            Body
+            </summary>
+        </member>
+        <member name="P:Capptain.Reach.CapptainReachPageViewModel`1.ActionLabel">
+            <summary>
+            Action label
+            </summary>
+        </member>
+        <member name="P:Capptain.Reach.CapptainReachPageViewModel`1.ExitLabel">
+            <summary>
+            Exit label
+            </summary>
+        </member>
+        <member name="P:Capptain.Reach.CapptainReachPageViewModel`1.HasTitle">
+            <summary>
+            Has a title
+            </summary>
+        </member>
+        <member name="P:Capptain.Reach.CapptainReachPageViewModel`1.HasSubtitle">
+            <summary>
+            Has a subtitle
+            </summary>
+        </member>
+        <member name="P:Capptain.Reach.CapptainReachPageViewModel`1.HasBody">
+            <summary>
+            Has a body
+            </summary>
+        </member>
+        <member name="P:Capptain.Reach.CapptainReachPageViewModel`1.HasButtons">
+            <summary>
+            Has buttons
+            </summary>
+        </member>
+        <member name="P:Capptain.Reach.CapptainReachPageViewModel`1.HasAction">
+            <summary>
+            Has action
+            </summary>
+        </member>
+        <member name="P:Capptain.Reach.CapptainReachPageViewModel`1.HasExit">
+            <summary>
+            Has exit
+            </summary>
+        </member>
+        <member name="T:Capptain.Reach.CapptainUI">
+            <summary>
+            Manage capptain display
+            </summary>
+        </member>
+        <member name="F:Capptain.Reach.CapptainUI.CAPPTAIN_NOTIFICATION_NAME">
+            <summary>
+            Contain application UI objects name
+            </summary>
+        </member>
+        <member name="F:Capptain.Reach.CapptainUI.PATH_NOTIFICATION_HTML">
+            <summary>
+            Contain application resource path
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.#ctor">
+            <summary>
+            CapptainUI empty constructor
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.FindChildControl``1(Windows.UI.Xaml.DependencyObject,System.String)">
+            <summary>
+            Use to find item on current displayed screen
+            </summary>
+            <typeparam name="T">Any control type</typeparam>
+            <param name="control">Object where we check</param>
+            <param name="ctrlName">Name of the control we need</param>
+            <returns></returns>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.NotificationNavigationCompleted(Windows.UI.Xaml.Controls.WebView,Windows.UI.Xaml.Controls.WebViewNavigationCompletedEventArgs)">
+            <summary>
+            Enable javascript action and attach on elements
+            </summary>
+            <param name="sender">WebView which raised the event</param>
+            <param name="args">WebViewNavigationCompleted Event Arguments</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.NotificationScriptNotifyHandler(System.Object,Windows.UI.Xaml.Controls.NotifyEventArgs)">
+            <summary>
+            Wait for event from javascript link with notification gesture
+            </summary>
+            <param name="sender">Object which raised the event</param>
+            <param name="e">NotifyEventArgs object</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.FinishNotification">
+            <summary>
+            Notify reach that notification is closed
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.NotificationExited">
+            <summary>
+            Send notification exit event to capptain agent
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.NotificationActioned">
+            <summary>
+            Send notification action event to capptain agent
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.NotificationDisplayed">
+            <summary>
+            Send notification display event to capptain agent
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.NotificationRemoved">
+            <summary>
+            Send notification removed event to capptain agent
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.ContentRemoved">
+            <summary>
+            Send content removed event to capptain agent
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.mWebView_NavigationCompleted(Windows.UI.Xaml.Controls.WebView,Windows.UI.Xaml.Controls.WebViewNavigationCompletedEventArgs)">
+            <summary>
+            Load javascript event and listener, set text on html elements
+            </summary>
+            <param name="sender">WebView which raised the event</param>
+            <param name="args">WebViewNavigationCompleted Event Arguments</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.WebViewScriptNotifyHandler(System.Object,Windows.UI.Xaml.Controls.NotifyEventArgs)">
+            <summary>
+            Wait for event from javascript link with web view gesture
+            </summary>
+            <param name="sender">Object which raised the event</param>
+            <param name="e">Notify event arguments</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.ExitWebview">
+            <summary>
+            Send webview message exit event to capptain agent
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.ActionWebview">
+            <summary>
+            Send webview message action event to capptain agent
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.DisplayWebview">
+            <summary>
+            Send webview message display event to capptain agent
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.ActionWebviewPoll(System.String)">
+            <summary>
+            Send webview message display event for poll to capptain agent
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.FinishWebview">
+            <summary>
+            Notify reach that web view is closed
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.TryNavigateTo(System.String)">
+            <summary>
+            Navigate to the given URI in a web browser task if the uri is valid
+            We can use all scheme provide by windows excepted file:///
+            Care this function loop.
+            </summary>
+            <param name="uri">Uri of the ressource</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.LaunchCustomerUri(System.Uri)">
+            <summary>
+            Use to launch Uri with scheme.
+            </summary>
+            <param name="uri">Uri to launch</param>
+            <returns></returns>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.NavigateToLocalUri(System.String)">
+            <summary>
+            Use to provide customer sended URI for opening file in app storage.
+            </summary>
+            <param name="uri">Uri of the ressource</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.ShowContent(Capptain.Reach.CapptainReachContent)">
+            <summary>
+            Show the content of a message to the user.
+            </summary>
+            <param name="content">A Capptain reach content to show.</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.ShowNotification(Capptain.Reach.CapptainReachContent)">
+            <summary>
+            Create a notification for the current page.
+            If an exception is catched during the creation, we throw it and let the
+            caller handles it.
+            </summary>
+            <returns>The notification view</returns>
+            <exception cref="T:System.Exception">If an error occurred during the execution</exception>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.RemoveNotification">
+            <summary>
+            Remove a Capptain notification from the current view.
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.RemoveContent">
+            <summary>
+            Remove a Capptain content from the current view.
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.WaitForUI(System.Action)">
+            <summary>
+            Poll the UI until a page is created.
+            Then, invoke a callback. 
+            </summary>
+            <param name="callback">The result callback which takes a boolean indicating 
+            if a launching message has launched the App or not and it's ID to retrieve it in the message spool. 
+            ID is set to -1 if no launching message was found.</param>
+        </member>
+        <member name="M:Capptain.Reach.CapptainUI.RunOnUI(System.Action)">
+            <summary>
+            Run an action on UI.
+            </summary>
+            <param name="action">The action.</param>
+        </member>
+        <member name="F:Capptain.Reach.CapptainUI.Finished">
+            <summary>
+            Event use to be raised to notify reach that message have finish to proceed
+            </summary>
+        </member>
+        <member name="T:Capptain.Reach.Channel">
+            <summary>
+            The Channel object is the link between MPNS and the SDK.
+            It establishes the channel, set the uri and the toast.
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.Channel.#ctor">
+            <summary>
+            Create a wrapper around the HttpNotificationChannel.
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.Channel.Bind">
+            <summary>
+            Initialize the HttpNotificationChannel.
+            Find the channel, create it if needed and attach handlers.
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.Channel.Unbind">
+            <summary>
+            Unbind the channel
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.Channel.AttachHandlers">
+            <summary>
+            Attach handlers for the http notification channel.
+            * Channel Uri updated
+            * Error occurred
+            * Shell toast received
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.Channel.DetachHandlers">
+            <summary>
+            Detach handlers for the http notification channel.
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.Channel.GetChannelUri">
+            <summary>
+            Retreive channel URI
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Capptain.Reach.Channel.SetChannelUri">
+            <summary>
+            Set channel URI
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.Channel.OnPushNotificationReceived(Windows.Networking.PushNotifications.PushNotificationChannel,Windows.Networking.PushNotifications.PushNotificationReceivedEventArgs)">
+            <summary>
+            Handler waiting for receiving push from wns
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Capptain.Reach.CapptainReach">
+            <summary>
+            Capptain Reach class.
+            Initialize the SDK and manage the push queue.
+            </summary>
+        </member>
+        <member name="F:Capptain.Reach.CapptainReach.CAPPTAIN_PUSH_ID_KEY">
+            <summary>
+            The capptain push ID key to retrieve of the ID in the launching URI.
+            </summary>
+        </member>
+        <member name="F:Capptain.Reach.CapptainReach.INVALID_CAPPTAIN_PUSH_ID">
+            <summary>
+            An invalid Capptain push ID.
+            </summary>
+        </member>
+        <member name="F:Capptain.Reach.CapptainReach.sInstance">
+            <summary>
+            Module instance
+            </summary>
+        </member>
+        <member name="F:Capptain.Reach.CapptainReach.syncInstantiation">
+            <summary>
+            Lock instanciation for thread safety.
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReach.Init(Windows.ApplicationModel.Activation.IActivatedEventArgs)">
+            <summary>
+            Initialize reach to handle push notification.
+            Your app must add this capability to react to push :
+            * <Capability Name="ID_CAP_PUSH_NOTIFICATION"/>
+            </summary>
+            <param name="args">The <see cref="T:Windows.ApplicationModel.Activation.IActivatedEventArgs"/>Provides event information when an app is activated.</param>
+        </member>
+        <member name="F:Capptain.Reach.CapptainReach.Handler">
+            <summary>
+            Handler to indicate which UI resources the Reach module should use.
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReach.#ctor">
+            <summary>
+            Create a Capptain Reach.
+            </summary>
+        </member>
+        <member name="P:Capptain.Reach.CapptainReach.Instance">
+            <summary>
+            Get the unique Capptain Reach instance.
+            </summary>
+        </member>
+        <member name="T:Capptain.Reach.CapptainReachHandler">
+            <summary>
+            UI handler for Capptain Reach.
+            Override any method you need to customize a component.
+            </summary>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReachHandler.GetNotfificationName">
+            <summary>
+            Name of the WebView use for notification
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReachHandler.GetAnnouncementName">
+            <summary>
+            Name of the WebView use for announcement
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReachHandler.GetNotfificationHTML">
+            <summary>
+            Uri for the notification webview
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Capptain.Reach.CapptainReachHandler.GetAnnouncementHTML">
+            <summary>
+            Uri for the web view announcement
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Capptain.Reach.WindowsReachFactory.CreateCapptainUI">
+            <summary>
+            Create a capptain UI instance to interract with user interface.
+            </summary>
+            <returns>
+            Instance of the capptain UI.
+            </returns>
+        </member>
+        <member name="M:Capptain.Reach.WindowsReachFactory.CreatePushChannel">
+            <summary>
+            Create a push channel instance to manage platform channel.
+            </summary>
+            <returns>
+            Instance of a push Channel.
+            </returns>
+        </member>
+        <member name="M:Capptain.Reach.WindowsReachFactory.CreateStateMachine(Capptain.Reach.MessageSpool,Capptain.Agent.CommandWorker)">
+            <summary>
+            Create an state machine to manage interacive content.
+            </summary>
+            <returns>
+            Instance of a Windows interactive content state machine.
+            </returns>
+        </member>
+        <member name="M:Capptain.Reach.WindowsReachFactory.CreateApplicationLifecycleManager">
+            <summary>
+            Return a unique instance of an application lifecycle manager.
+            </summary>
+            <returns>
+            Unique instance of an application lifecycle manager
+            </returns>
+        </member>
+        <member name="M:Capptain.Reach.WindowsReachFactory.RunOnUI(System.Action)">
+            <summary>
+            Run an action on the UI thread.
+            </summary>
+            <param name="action">The action to be run on the UI thread.</param>
+        </member>
+    </members>
+</doc>

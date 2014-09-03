@@ -1,0 +1,402 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Capptain.Agent.Win</name>
+    </assembly>
+    <members>
+        <member name="T:Capptain.Agent.CapptainAgent">
+            <summary>
+            The Capptain Agent module allows you to report your application statistics.
+            The Capptain Agent must be initialized by calling the "Init(IActivatedEventArgs, [CapptainConfiguration])" method.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.CapptainAgent.CAPPTAIN_CONFIGURATION_PATH">
+            <summary>
+            Path to the Capptain configuration file in a Windows store App.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.CapptainAgent.sInstance">
+            <summary>
+            Unique instance of Capptain agent.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.CapptainAgent.syncInstantiation">
+            <summary>
+            Lock instanciation for thread safety.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.CapptainAgent.#ctor">
+            <summary>
+            Create a CapptainAgent.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.CapptainAgent.Init(Windows.ApplicationModel.Activation.IActivatedEventArgs,Capptain.Agent.CapptainConfiguration)">
+            <summary>
+            Init the Capptain Agent module.
+            You should call this method when your application starts.
+            </summary>
+            <param name="args">The <see cref="T:Windows.ApplicationModel.Activation.IActivatedEventArgs"/>Provides event information when an app is activated.</param>
+            <param name="capptainConfiguration">Your capptain configuration object if you want to set the configuration at run time.</param>
+            <exception cref="T:Capptain.Agent.CapptainIncorrectConfigurationException">This exception is thrown if the Capptain configuration is not set or is not valid.</exception>
+        </member>
+        <member name="M:Capptain.Agent.CapptainAgent.Terminate">
+            <summary>
+            Manually terminate the Capptain Agent.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.CapptainAgent.Resume(Capptain.Agent.SessionStates,System.String,System.Collections.Generic.Dictionary{System.Object,System.Object})">
+            <summary>
+            Handler called when the application is resuming.
+            </summary>
+            <param name="sessionStarted">if set to <c>true</c> then the session is started.</param>
+            <param name="activityName">Name of the activity to start again.</param>
+            <param name="activityExtras">The activity extras.</param>
+        </member>
+        <member name="P:Capptain.Agent.CapptainAgent.AgentInitTask">
+            <summary>
+            Gets the agent initialization task.
+            </summary>
+            <value>
+            The agent initialization task.
+            </value>
+        </member>
+        <member name="P:Capptain.Agent.CapptainAgent.Instance">
+            <summary>
+            Get the unique instance of the Capptain agent.
+            </summary>
+            <value>
+            The instance.
+            </value>
+        </member>
+        <member name="T:Capptain.Agent.CapptainMetadata">
+            <summary>
+            Capptain Metadata.
+            This class contains :
+            - the version number
+            - the XML namespaces
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.CapptainMetadata.VERSION">
+            <summary>
+            Capptain Windows SDK.
+            </summary>
+        </member>
+        <member name="T:Capptain.Agent.CapptainPage">
+            <summary>
+            Helper class used to replace Windows's Page class.
+            Automatically starts a new Capptain activity when displayed.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.CapptainPage.#ctor">
+            <summary>
+            CapptainPage constructor
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.CapptainPage.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Send an activity to the capptain backend when the page is displayed (not loaded).
+            </summary>
+            <param name="e">Navigation event argument.</param>
+        </member>
+        <member name="M:Capptain.Agent.CapptainPage.GetCapptainPageName">
+            <summary>
+            Override this to specify the name reported by your page. 
+            The default implementation returns the simple name of the class 
+            and removes the "Page" suffix if any (e.g. "MainPage" -> "Main").
+            </summary>
+            <returns>The page name reported by the Capptain service.</returns>
+        </member>
+        <member name="M:Capptain.Agent.CapptainPage.GetCapptainPageExtra">
+            <summary>
+            Override this to attach extra information to your page. 
+            The default implementation attaches no extra information (i.e. return null).
+            </summary>
+            <returns>Page extra information, null or empty if no extra.</returns>
+        </member>
+        <member name="P:Capptain.Agent.CapptainPage.getCapptainContext">
+            <summary>
+            Return the capptain UI thread
+            </summary>
+        </member>
+        <member name="T:Capptain.Agent.DeviceStatus">
+            <summary>
+            Device status.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.#ctor">
+            <summary>
+            Create a new device status.
+            Should be run in a task.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetSDKVersion">
+            <summary>
+            SDK version.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetNetwork">
+            <summary>
+            Network Info
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetPhoneModel">
+            <summary>
+            Phone Model
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetPhoneManufacturer">
+            <summary>
+            Phone Manufacturer
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetFirmwareName">
+            <summary>
+            Firmware Name
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetLocale">
+            <summary>
+            Locale.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceStatus.SetTimezoneOffset">
+            <summary>
+            Timezone offset.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.LocationStatus.RetrieveLocation">
+            <summary>
+            Async method to retrieve the position.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Capptain.Agent.NetworkStatus">
+            <summary>
+            INetworkStatus implementation.
+            </summary>
+        </member>
+        <member name="T:Capptain.Agent.HMACSHA1">
+            <summary>
+            HMACSHA1 implementation.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.HMACSHA1.sProvider">
+            <summary>
+            HMACSHA1 provider.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.HMACSHA1.from(System.String,System.String)">
+            <summary>
+            Create a HMACSHA1.
+            </summary>
+            <param name="key">Key</param>
+            <param name="data">Value</param>
+            <returns>The HMACSHA1 for the key and value</returns>
+        </member>
+        <member name="T:Capptain.Agent.ApplicationLifecycleManager">
+             <summary>
+             Application lifecycle management for Windows.
+            
+             Lifecycle of an app :
+             Suspended -- > NotRunning
+             ¦ ʌ ¦
+             v ¦ ¦
+             Running -----------
+             </summary>
+        </member>
+        <member name="F:Capptain.Agent.ApplicationLifecycleManager.SECONDS_BEFORE_SUSPENDING">
+            <summary>
+            The amount of seconds to wait before Capptain will be suspended.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.ApplicationLifecycleManager.ctsVisibility">
+            <summary>
+            Token use to cancel the visibility suspended task.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.ApplicationLifecycleManager.mDoesVisibilityStartsSuspending">
+            <summary>
+            Does the visibility event has started the App suspeded process.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.ApplicationLifecycleManager.mDoesSuspendedEventStarts">
+            <summary>
+            Does the system suspended event has started the App suspeded process.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.ApplicationLifecycleManager.mDoesVisibilityStartsResuming">
+            <summary>
+            Does the visibility event has started the App resumed process.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.ApplicationLifecycleManager.mDoesResumedEventStarts">
+            <summary>
+            Does the system suspended event has started the App resumed process.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.ApplicationLifecycleManager.mSuspendedTask">
+            <summary>
+            The task that will process the suspending action.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.ApplicationLifecycleManager.mLock">
+            <summary>
+            Lock multithread processing.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.ApplicationLifecycleManager.Init">
+            <summary>
+            Initialise the application life cycle.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.ApplicationLifecycleManager.SetOnSuspendEventHandler(System.Action)">
+            <summary>
+            Handle the event SuspendingEventArgs when app suspend
+            suspend event are those which are set on the app.xaml.cs
+            in the ApplicationExecutionState switch.
+            </summary>
+            <param name="onSuspended">action for suspending</param>
+        </member>
+        <member name="M:Capptain.Agent.ApplicationLifecycleManager.SetOnVisibilityEventHandler(System.Action,System.Action,System.Action,System.Action)">
+            <summary>
+            Handle visibility change. If it goes false user can't see app,
+            when it's true user has back to app. Moreover it ensure that
+            we already grab the endSession state if user back on app and
+            close it without interact with it.
+            </summary>
+            <param name="onVisibilityHide">action for visibility changing</param>
+            <param name="onVisibilityShow">action for visibility changing</param>
+            <param name="onSuspended">action for suspending</param>
+            <param name="onResumed">action for resuming</param>
+        </member>
+        <member name="M:Capptain.Agent.ApplicationLifecycleManager.SetOnCrashedHandler(System.Action{System.Exception})">
+            <summary>
+            Handle the event UnhandledExceptionEventArgs when app crash.
+            </summary>
+            <param name="onCrashed">action for crashing</param>
+        </member>
+        <member name="M:Capptain.Agent.ApplicationLifecycleManager.SetOnResumedHandler(System.Action)">
+            <summary>
+            Set the on resumed handler
+            </summary>
+            <param name="onResumed">action for resuming</param>
+        </member>
+        <member name="M:Capptain.Agent.ApplicationLifecycleManager.SetOnResumedHandler">
+            <summary>
+            Set the on resumed handler, the resumed action is a property and is dynamically set later on.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.ApplicationLifecycleManager.PostActionOnAppContext(System.Action)">
+            <summary>
+            Post an action on the application context. Be carefull, 
+            this action will run on the application thread so it must be lightweight.  
+            </summary>
+            <param name="action">The action.</param>
+        </member>
+        <member name="F:Capptain.Agent.ApplicationLifecycleManager.OnResumedHandler">
+            <summary>
+            This is action played when the app is resuming.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.ApplicationLifecycleManager.AppSynchronizationContext">
+            <summary>
+            The hosting application's synchronization context.
+            </summary>
+        </member>
+        <member name="T:Capptain.Agent.DeviceIdentification">
+            <summary>
+            Device identification maanger.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.DeviceIdentification.DEVICE_ID_KEY">
+            <summary>
+            Device id local data key.
+            /!\ DO NOT CHANGE IT, otherwise every device id of an updated app will change.
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.DeviceIdentification.IANA_ETHERNET">
+            <summary>
+            Iana ethernet interface value
+            </summary>
+        </member>
+        <member name="F:Capptain.Agent.DeviceIdentification.sDeviceId">
+            <summary>
+            Device id.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.DeviceIdentification.GetDeviceId">
+            <summary>
+            Get the device id from the local data.
+            Create it if it does not exist.
+            </summary>
+            <returns>The device id</returns>
+        </member>
+        <member name="M:Capptain.Agent.DeviceIdentification.CreateDeviceId">
+            <summary>
+            Create a device id.
+            - Hardware id if exists
+            - Generated GUID otherwise
+            </summary>
+            <returns>The device id</returns>
+        </member>
+        <member name="M:Capptain.Agent.DeviceIdentification.GetHardwareGUID">
+            <summary>
+            Get the id of a network adapter.
+            </summary>
+            <returns>Id if it exists, null otherwise</returns>
+        </member>
+        <member name="M:Capptain.Agent.DeviceIdentification.PrepareGUID(System.String)">
+            <summary>
+            Format a C# GUID.
+            Remove the dashes and put in lowercase.
+            Do a lowercase MD5 hash of the resulting string.
+            
+            Example :
+              Original  => 0F8fad5b-d9cb-469f-A165-70867728950e
+              Formatted => 0f8fad5bd9cb469fa16570867728950e
+              MD5       => 16da64668d09ef392eb6d870d3ce1cdd
+            </summary>
+            <param name="original">Original GUID</param>
+            <returns>Hash of the formatted GUID</returns>
+        </member>
+        <member name="M:Capptain.Agent.Storage`1.#ctor(System.String)">
+            <summary>
+            Storage construtor
+            build setting Path on abstrac storage
+            Path var it use to define storage location
+            each instance of storage have is own path
+            </summary>
+            <param name="path">Filename of the storage</param>
+        </member>
+        <member name="M:Capptain.Agent.Storage`1.InnerSave(System.Collections.Generic.List{`0})">
+            <summary>
+            Save data in cache
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:Capptain.Agent.Storage`1.InnerLoad">
+            <summary>
+            Load data in cache
+            </summary>
+            <returns>A list of Capptain data</returns>
+        </member>
+        <member name="M:Capptain.Agent.Storage`1.InnerDelete">
+            <summary>
+            Delete data in cache
+            </summary>
+        </member>
+        <member name="T:Capptain.Agent.WindowsAgentFactory">
+            <summary>
+            Windows Agent Factory implementation.
+            </summary>
+        </member>
+        <member name="M:Capptain.Agent.WindowsAgentFactory.CreateApplicationLifecycleManager">
+            <summary>
+            Return a unique instance of an application lifecycle manager.
+            </summary>
+            <returns>
+            Unique instance of an application lifecycle manager
+            </returns>
+        </member>
+    </members>
+</doc>
