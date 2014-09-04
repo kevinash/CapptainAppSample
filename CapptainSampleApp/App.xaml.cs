@@ -68,8 +68,8 @@ namespace CapptainSampleApp
 
             /* Capptain configuration. */
             CapptainConfiguration capptainConfiguration = new CapptainConfiguration();
-            capptainConfiguration.Agent.ApplicationId = "msd000000";// "YOUR_APPID";
-            capptainConfiguration.Agent.SDKKey = "7a8e135160a24876a31f589f30a1ae64";// "YOUR_SDK_KEY";
+            capptainConfiguration.Agent.ApplicationId = "YOUR_APPID";
+            capptainConfiguration.Agent.SDKKey = "YOUR_SDK_KEY";
 
             /* Initialize Capptain angent with above configuration. */
             CapptainAgent.Instance.Init(e, capptainConfiguration);
