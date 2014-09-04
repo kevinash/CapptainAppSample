@@ -50,6 +50,12 @@ namespace CapptainSampleApp
                 return true;
             };
 
+            CapptainReach.Instance.PushMessageReceived += (id, replyTo, payload) =>
+            {
+                // your code.
+            };
+
+
         }
 
         /// <summary>
