@@ -27,6 +27,13 @@
           </FileTypeAssociation>
         </Extension>
         <Extension Category="windows.cachedFileUpdater" />
+        <Extension Category="windows.fileTypeAssociation">
+          <FileTypeAssociation Name="capptain_reach_content">
+            <SupportedFileTypes>
+              <FileType>.txt</FileType>
+            </SupportedFileTypes>
+          </FileTypeAssociation>
+        </Extension>
       </Extensions>
     </Application>
   </Applications>

@@ -1,9 +1,10 @@
-﻿<Page
+﻿<capptain:CapptainPageOverlay
     x:Name="pageRoot"
     x:Class="CapptainSampleApp.ItemPage"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:capptain="using:Capptain.Overlay"
     xmlns:local="using:CapptainSampleApp"
     xmlns:data="using:CapptainSampleApp.Data"
     xmlns:common="using:CapptainSampleApp.Common"
@@ -51,4 +52,4 @@
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
         </Grid>
     </Grid>
-</Page>
+</capptain:CapptainPageOverlay>

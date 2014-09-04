@@ -1,7 +1,9 @@
 ﻿using Capptain.Agent;
+using Capptain.Reach;
 using CapptainSampleApp.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -34,6 +36,20 @@ namespace CapptainSampleApp
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            CapptainReach.Instance.DataPushStringReceived += (body) =>
+            {
+                Debug.WriteLine("String data push message received: " + body);
+                return true;
+            };
+
+            CapptainReach.Instance.DataPushBase64Received += (decodedBody, encodedBody) =>
+            {
+                Debug.WriteLine("Base64 data push message received: " + encodedBody);
+                // Do something useful with decodedBody like updating an image view
+                return true;
+            };
+
         }
 
         /// <summary>
@@ -52,11 +68,12 @@ namespace CapptainSampleApp
 
             /* Capptain configuration. */
             CapptainConfiguration capptainConfiguration = new CapptainConfiguration();
-            capptainConfiguration.Agent.ApplicationId = "YOUR_APPID";
-            capptainConfiguration.Agent.SDKKey = "YOUR_SDK_KEY";
+            capptainConfiguration.Agent.ApplicationId = "msd000000";// "YOUR_APPID";
+            capptainConfiguration.Agent.SDKKey = "7a8e135160a24876a31f589f30a1ae64";// "YOUR_SDK_KEY";
 
             /* Initialize Capptain angent with above configuration. */
             CapptainAgent.Instance.Init(e, capptainConfiguration);
+            CapptainReach.Instance.Init(e);
 
 
             Frame rootFrame = Window.Current.Content as Frame;

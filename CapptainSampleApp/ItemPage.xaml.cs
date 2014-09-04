@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using Capptain.Overlay;
 
 // The Item Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234232
 
@@ -24,7 +24,7 @@ namespace CapptainSampleApp
     /// <summary>
     /// A page that displays details for a single item within a group.
     /// </summary>
-    public sealed partial class ItemPage : Page
+    public sealed partial class ItemPage : CapptainPageOverlay
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
